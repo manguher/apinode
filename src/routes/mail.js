@@ -25,8 +25,8 @@ router.post('/', (req, res) => {
         var mailOptions = {
             from: correo,
             to: 'contacto@lucianogonzalez.cl',
-            subject: 'prueba',
-            text: `${texto}`
+            subject: 'Mensaje desde la página web',
+            text: `${mensaje}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
