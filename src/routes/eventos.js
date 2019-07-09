@@ -3,7 +3,7 @@ const router = Router();
 
 const eventos = require("../eventos.json");
 
-router.get('/eventos', (req, res) => {
+router.get('/', (req, res) => {
     res.json(eventos);
 });
 

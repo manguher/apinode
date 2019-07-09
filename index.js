@@ -11,9 +11,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // routes
-app.use(require('./routes'));
-app.use('/api/mail', require('./routes/mail'));
-app.use('/api/eventos', require('./routes/eventos'));
+app.use(require('./src/routes'));
+app.use('/api/mail', require('./src/routes/mail'));
+app.use('/api/eventos', require('./src/routes/eventos'));
 // app.use('/api/users', require('./routes/users'));
 
 // starting the server
