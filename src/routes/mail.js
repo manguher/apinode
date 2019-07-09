@@ -16,6 +16,7 @@ router.post('/', (req, res) => {
         var transporter = nodemailer.createTransport({
             host: 'renes10416me.dedicados.cl',
             port: '465',
+            secure: true,
             auth: {
                 user: 'contacto@lucianogonzalez.cl',
                 pass: 'contacto_123'
@@ -34,7 +35,7 @@ router.post('/', (req, res) => {
                 console.log(error);
                 res.status(500).json(
                     {
-                        error: 'error al enviar el correo de ' + mailOptions.from
+                        error: 'error al enviar el correo de ' + mailOptions.from + ' detalle : ' + error
                     }
                 );
             } else {
