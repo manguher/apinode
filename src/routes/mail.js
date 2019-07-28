@@ -2,6 +2,8 @@ const { Router } = require('express');
 const router = new Router();
 const _ = require('underscore');
 var nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
+
 
 router.get('/', (req, res) => {
     res.send("mail");
@@ -14,17 +16,11 @@ router.post('/', (req, res) => {
     const { mensaje, nombre, correo } = req.body;
     if (mensaje && nombre && regex.test(correo)) {
         var transporter = nodemailer.createTransport({
-            pool: true,
-            host: 'renes10416me.dedicados.cl',
+            host: 'mail.lucianogonzalez.cl',
             port: '465',
-            secure: true,
             auth: {
                 user: 'contacto@lucianogonzalez.cl',
                 pass: 'contacto_123'
-            },
-            tls: {
-                // do not fail on invalid certs
-                rejectUnauthorized: false
             }
         });
 
