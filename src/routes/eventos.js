@@ -12,6 +12,7 @@ var ObjectID = require('mongodb').ObjectID;
 router.get('/', (req, res) => {
 
     MongoClient.connect(uri, function (err, db) {
+
         if (err) res.status(500).send(err);
         var dbo = db.db("dbweblg");
         var today = new Date().toLocaleDateString('es-CL', {
@@ -19,6 +20,7 @@ router.get('/', (req, res) => {
             month: '2-digit',
             year: 'numeric'
         });
+
         dbo.collection("eventos").find({ "fecha": { $gte: new Date(today) } })
             .toArray(function (err, result) {
                 if (err) res.status(500).send(err);
@@ -45,7 +47,7 @@ router.put('/:id', (req, res) => {
                     $set:
                     {
                         "title": title,
-                        "fecha": fecha,
+                        "fecha": new Date(fecha),
                         "direccion": direccion,
                         "description": description
                     }
